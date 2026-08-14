@@ -14,6 +14,14 @@ function divide(a,b){
     return a/b;
 }
 
+function percentage(a){
+    return a/100;
+}
+
+function sqrt(a){
+    return a**(1/2);
+}
+
 function operate(a,operator,b){
     switch(operator){
         case "+":
@@ -28,6 +36,12 @@ function operate(a,operator,b){
         case "/":
            return divide(a,b);
             break; 
+        case "√":
+            return sqrt(a);
+            break;
+        case "%":
+            return percentage(a);
+            break;
         default:
             return "Invalid Operator";       
     }
