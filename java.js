@@ -51,20 +51,46 @@ function operate(a,operator,b){
 }
 
 
-display.value = 0;
 const operators = ["+", '-', "÷", "X", "√", "%"];
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let values = [];
+let secondValue;
 
 btn.forEach((button)=>{
     button.addEventListener("click", (event)=>{
         if (display.value === "0"){
             display.value = "";
         }
+
         if (numbers.includes(button.textContent)){
             display.value += button.textContent;
+            if (values.length > 0){
+                secondValue = display.value;
+            }
         }
+
         else if (operators.includes(button.textContent)){
             display.value += "";
+            if (values.length > 1){
+                values.pop();
+                values.push(button.textContent);
+            }
+            else {
+                values.push(parseInt(display.value));
+                values.push(button.textContent);
+            }
+            display.value = 0;                 
+        }
+
+        else if (button.textContent === "="){
+            display.value += "";
+            values.push(parseInt(secondValue));
+            display.value = operate(values[0], values[1], values[2]);
+        }
+
+        else if (button.textContent === "C"){
+            display.value = 0;
+            values.length = 0;
         }
     })
-})
+});
