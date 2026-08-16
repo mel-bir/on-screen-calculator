@@ -32,6 +32,7 @@ html {
     text-align: right;
     border-radius: 20px;
     border: solid 2px rgb(124, 89, 59);
+    cursor: default;
 }
 
 #buttons {
