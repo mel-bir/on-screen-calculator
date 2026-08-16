@@ -14,7 +14,12 @@ function multiply(a,b){
 }
 
 function divide(a,b){
-    return a/b;
+    if (b===0){
+        return "error";
+    }
+    else {
+        return a/b;
+    }  
 }
 
 function percentage(a){
@@ -50,7 +55,6 @@ function operate(a,operator,b){
     }
 }
 
-
 const operators = ["+", '-', "÷", "X", "√", "%"];
 const numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 let values = [];
@@ -58,17 +62,15 @@ let secondValue;
 
 btn.forEach((button)=>{
     button.addEventListener("click", (event)=>{
-        if (display.value === "0"){
-            display.value = "";
-        }
-
         if (numbers.includes(button.textContent)){
+            if (display.value === "0"){
+                display.value = "";
+            }
             display.value += button.textContent;
             if (values.length > 0){
                 secondValue = display.value;
             }
         }
-
         else if (operators.includes(button.textContent)){
             display.value += "";
             if (values.length > 1){
@@ -94,3 +96,4 @@ btn.forEach((button)=>{
         }
     })
 });
+console.log(values)
